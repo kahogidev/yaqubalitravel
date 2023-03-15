@@ -18,7 +18,7 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = '@web/frontend-files';
+    public $baseUrl = '@web/frontend-files/';
     public $css = [
       "plugins/bootstrap/css/bootstrap.min.css",
       "plugins/font-awesome/css/font-awesome.min.css",

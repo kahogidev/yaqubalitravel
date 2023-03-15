@@ -45,7 +45,7 @@
                         <div class="dropdown-content">
                             <?php
                             foreach (Yii::$app->params['language'] as $key => $value){
-                                echo " <a style='font-color:black' href='".\yii\helpers\Url::to(['site/ozgar',"til"=>$key])."'>".$value."</a>";
+                                echo " <a style='font-color:black' href='".\yii\helpers\Url::to(['site/ozgar',"til"=>$key])."'>".$value. "</a>";
                             }
                             ?>
 
@@ -79,7 +79,7 @@
     <div class="zt-container clearfix">
         <div class="logo pull-left">
             <a href="index-2.html">
-                <img style="width: 80px" src="/frontend-files/images/logo.png" alt="">
+                <img style="width: 70px" src="/frontend-files/images/logo.png" alt="">
             </a>
         </div>
         <nav class="nav-holder pull-right">
@@ -87,7 +87,7 @@
                 <ul class="nav">
                     <?php if (!empty($menues)): ?>
                        <?php foreach ($menues as $menue): ?>
-                             <li><a style="padding-right: 15px" href="<?=$menue->link?>"><?=$menue['name_'.Yii::$app->language];?></a></li>
+                             <li><a style="padding-right: 12px" href="<?=$menue->link?>"><?=$menue['name_'.Yii::$app->language];?></a></li>
                         <?php endforeach;?>
                     <?php endif;?>
 
