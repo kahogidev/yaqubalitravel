@@ -3,6 +3,7 @@ return[
 
     "book" => "Buyurtma berish",
     "lang" => "O'zbekcha",
+    "manager" => "Bizning jamoamiz",
 
 
 //    slider page

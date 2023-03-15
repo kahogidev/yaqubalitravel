@@ -1,5 +1,6 @@
 <?php
 
+use app\models\StaticFunctions;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -12,30 +13,31 @@ use yii\grid\GridView;
 $this->title = 'Xodimlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sub-header-container">
-    <header class="header navbar navbar-expand-sm">
-        <ul class="navbar-nav flex-row">
-            <li>
-                <div class="page-header">
-
-                    <nav class="breadcrumb-one" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class=""><a href="<?=\yii\helpers\Url::to(['/admin'])?>">Bosh sahifa/ </a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><span>Xodimlar</span></li>
-                        </ol>
-                    </nav>
-
-                </div>
-            </li>
-        </ul>
-    </header>
-</div>
 <div class="managers-index">
+    <div class="sub-header-container">
+        <header class="header navbar navbar-expand-sm">
+            <ul class="navbar-nav flex-row">
+                <li>
+                    <div class="page-header">
+
+                        <nav class="breadcrumb-one" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class=""><a href="<?=\yii\helpers\Url::to(['/admin'])?>">Bosh sahifa/</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><span>Xodimlar</span></li>
+                            </ol>
+                        </nav>
+
+                    </div>
+                </li>
+            </ul>
+        </header>
+    </div>
+    <div class="tours-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Yangi xodim qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Xodim qo`shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -53,6 +55,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'position',
             'status',
+            [
+                'attribute' => 'images',
+                'value' => function($data){
+                    $image = StaticFunctions::getImage('managers',$data->id, $data->images);
+                    return "<img src='$image' style='max-width: 100px'>";
+                },
+                'format' => 'html'
+            ],
             [
                 'class' => ActionColumn::className(),
                 'header' => 'Amallar',

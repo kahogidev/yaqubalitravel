@@ -24,7 +24,7 @@
             <div class="overlay-bg zt-overlay-panel zt-overlay-background"></div>
             <img src="<?=$img?>" alt="" />
         </li>
-            <?php endforeach;?>
-        <?php endif;?>
+                <?php endforeach;?>
+            <?php endif;?>
     </ul>
 </section>

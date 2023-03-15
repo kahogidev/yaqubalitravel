@@ -3,7 +3,7 @@ return[
     "book" => "Order",
     "lang" => "English",
 
-
+    "manager" => "Our team",
 // slider page
     "slider1" => "worldwide",
     "sliders1" => "travel",

@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="footer-widget notitle about-widget">
-                    <div class="title">
-
+                    <div >
+                        <img style="height: 120px; width: 200px" src="/frontend-files/images/logo.png" alt="" />
                     </div>
-                    <img class="logo-footer" src="/frontend-files/images/logo.png" alt="" />
-                    <p><?= Yii::t("app", "about1")?></p>
+
+                        <p><?= Yii::t("app", "about1")?></p>
                 </div>
             </div>
             <div class="col-md-2 col-sm-6 col-xs-12">

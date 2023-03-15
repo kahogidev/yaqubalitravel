@@ -36,23 +36,27 @@
 
 <div id="top-bar" class="hidden-sm hidden-xs home">
     <div class="zt-container">
+
         <div class="login pull-right">
             <ul>
-                <li><a href="<?=\yii\helpers\Url::to(["admin/"])?>">Login</a></li>
-                <li><div class="lang-dropdown">
-                        <div class="dropdown">
-                            <button class="dropbtn"><?= Yii::t("app", "lang")?></button>
-                            <div class="dropdown-content">
-                                <?php
-                                foreach (Yii::$app->params['language'] as $key => $value){
-                                    echo " <a style='font-color:black' href='".\yii\helpers\Url::to(['site/ozgar',"til"=>$key])."'>".$value."</a>";
-                                }
-                                ?>
+            <li><div class="lang-dropdown">
+                    <div class="dropdown">
+                        <button class="dropbtn"><?= Yii::t("app", "lang")?></button>
+                        <div class="dropdown-content">
+                            <?php
+                            foreach (Yii::$app->params['language'] as $key => $value){
+                                echo " <a style='font-color:black' href='".\yii\helpers\Url::to(['site/ozgar',"til"=>$key])."'>".$value."</a>";
+                            }
+                            ?>
 
-                            </div>
-                        </div></li>
+                        </div>
+                    </div></li>
+            </ul>
 
-                </ul>
+            <ul></ul>
+
+
+
         </div>
         <div class="form-search-wrap">
             <div class="zt-container">
@@ -75,7 +79,7 @@
     <div class="zt-container clearfix">
         <div class="logo pull-left">
             <a href="index-2.html">
-                <img src="/frontend-files/images/logo.png" alt="">
+                <img style="width: 80px" src="/frontend-files/images/logo.png" alt="">
             </a>
         </div>
         <nav class="nav-holder pull-right">
@@ -83,12 +87,11 @@
                 <ul class="nav">
                     <?php if (!empty($menues)): ?>
                        <?php foreach ($menues as $menue): ?>
-                             <li><a href="<?=$menue->link?>"><?=$menue['name_'.Yii::$app->language];?></a></li>
+                             <li><a style="padding-right: 15px" href="<?=$menue->link?>"><?=$menue['name_'.Yii::$app->language];?></a></li>
                         <?php endforeach;?>
                     <?php endif;?>
-                    <li style="margin-left: 100px!important;>
 
-                    </li>
+                    <li><a href="<?=\yii\helpers\Url::to(["admin/"])?>">Login</a></li>
                 </ul>
             </div>
             <div class="nav-header">

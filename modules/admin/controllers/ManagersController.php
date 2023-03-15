@@ -4,15 +4,20 @@ namespace app\modules\admin\controllers;
 
 use app\models\Managers;
 use app\models\ManagersSearch;
+use app\models\StaticFunctions;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ManagersController implements the CRUD actions for Managers model.
  */
 class ManagersController extends DefaultController
 {
+    /**
+     * @inheritDoc
+     */
 
 
     /**
@@ -54,8 +59,23 @@ class ManagersController extends DefaultController
         $model = new Managers();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if (!empty(!$model->status)){
+                $model->status = 1;
+            }else{
+                $model->status = 0;
+            }
+            if ($model->load($this->request->post())) {
+                if ($model->save()) {
+
+                    $model->images = UploadedFile::getInstance($model,'images');
+                    $model->images = StaticFunctions::saveImage('managers',$model->id,$model->images);
+
+                    $model->save();
+
+                    return $this->redirect(['index', 'id' => $model->id]);
+                }else{
+                    debug($model->errors);die;
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -76,9 +96,29 @@ class ManagersController extends DefaultController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldImage = $model->images;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+//            if (!empty(!$model->status)){
+//                $model->status = 1;
+//            }else{
+//                $model->status = 0;
+//            }
+
+            $model->images = UploadedFile::getInstance($model,'images');
+
+            if (!empty($model->images)){
+                $model->images = StaticFunctions::saveImage('managers',$model->id,$model->images);
+                StaticFunctions::deleteImage('managers',$model,$oldImage);
+            }else{
+                $model->images = $oldImage;
+            }
+
+            if ($model->save()){
+                return $this->redirect(['index', 'id' => $model->id]);
+            }else{
+                debug($model->errors);die;
+            }
         }
 
         return $this->render('update', [

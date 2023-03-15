@@ -18,7 +18,7 @@ class ManagersSearch extends Managers
     {
         return [
             [['id', 'status'], 'integer'],
-            [['first_name', 'last_name', 'first_phone', 'email', 'position'], 'safe'],
+            [['first_name', 'last_name', 'first_phone', 'email', 'position', 'images'], 'safe'],
         ];
     }
 
@@ -66,7 +66,8 @@ class ManagersSearch extends Managers
             ->andFilterWhere(['like', 'last_name', $this->last_name])
             ->andFilterWhere(['like', 'first_phone', $this->first_phone])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'position', $this->position]);
+            ->andFilterWhere(['like', 'position', $this->position])
+            ->andFilterWhere(['like', 'images', $this->images]);
 
         return $dataProvider;
     }

@@ -14,6 +14,7 @@ use Yii;
  * @property string $email
  * @property string $position
  * @property int|null $status
+ * @property string|null $images
  */
 class Managers extends \yii\db\ActiveRecord
 {
@@ -33,7 +34,7 @@ class Managers extends \yii\db\ActiveRecord
         return [
             [['first_name', 'last_name', 'first_phone', 'email', 'position'], 'required'],
             [['status'], 'integer'],
-            [['first_name', 'last_name', 'first_phone', 'email', 'position'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'first_phone', 'email', 'position', 'images'], 'string', 'max' => 255],
         ];
     }
 
@@ -50,6 +51,7 @@ class Managers extends \yii\db\ActiveRecord
             'email' => 'Email',
             'position' => 'Position',
             'status' => 'Status',
+            'images' => 'Images',
         ];
     }
 }
